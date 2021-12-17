@@ -1,6 +1,8 @@
 package com.nuzhd.bot.main;
 
 import com.nuzhd.bot.service.MessageHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -12,6 +14,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 @PropertySource("classpath:application.properties")
 @Component
 public class MyWeatherBot extends TelegramLongPollingBot {
+
+    private static Logger log = LoggerFactory.getLogger(MyWeatherBot.class);
 
     @Value("${bot.token}")
     private String botToken;
@@ -31,6 +35,8 @@ public class MyWeatherBot extends TelegramLongPollingBot {
 
         final String msgText = update.getMessage().getText();
         final long chatId = update.getMessage().getChatId();
+
+        log.info("#### > Пользователь с id " + chatId + " отправил сообщение с текстом: " + msgText);
 
         StringBuilder reply = MessageHandler.handleInput(msgText);
 
