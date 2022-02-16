@@ -8,4 +8,11 @@ public class BotStart {
     public static void main(String[] args) {
         SpringApplication.run(BotStart.class, args);
     }
+    
+    /*@Bean
+    public CommandLineRunner justInCase(){
+        Properties props = new Properties();
+        return args -> {
+        };
+    }*/
 }

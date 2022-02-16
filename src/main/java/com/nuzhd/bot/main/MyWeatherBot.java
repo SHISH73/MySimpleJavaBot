@@ -28,6 +28,11 @@ public class MyWeatherBot extends TelegramLongPollingBot {
     }
 
     @Override
+    public String getBotUsername() {
+        return botUsername;
+    }
+
+    @Override
     public void onUpdateReceived(Update update) {
         if (!update.hasMessage() || !update.getMessage().hasText()){
             return;
@@ -39,7 +44,6 @@ public class MyWeatherBot extends TelegramLongPollingBot {
         log.info("#### > Пользователь с id " + chatId + " отправил сообщение с текстом: " + msgText);
 
         StringBuilder reply = MessageHandler.handleInput(msgText);
-
 
         sendMessage(chatId,reply.toString());
     }
@@ -57,8 +61,5 @@ public class MyWeatherBot extends TelegramLongPollingBot {
         }
     }
 
-    @Override
-    public String getBotUsername() {
-        return botUsername;
-    }
+
 }
