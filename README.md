@@ -1,4 +1,4 @@
-# Java Bot
+# Java Weather Bot
  
 Just a simple java bot with some functions.
 Currently it has only one function: showing weather conditions in particular place/area.
